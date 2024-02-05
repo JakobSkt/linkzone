@@ -3,7 +3,7 @@ import * as helpers from '$lib/db/helpers'
 import { db } from '$lib/db/db';
 import { links } from '$lib/db/schema';
 import { z } from 'zod'
-import { superValidate, message } from 'sveltekit-superforms/server';
+import { superValidate, message, setError } from 'sveltekit-superforms/server';
 
 const codeSchema = z.object({
     customCodeb: z.boolean(),
@@ -12,8 +12,8 @@ const codeSchema = z.object({
 
 const zoneSchema = z.object({
     linkzone_intro: z.string(),
-    link_url: z.string(),
-    link_dsc: z.string()
+    linkUrl: z.string().array(),
+    linkDsc: z.string().array()
 })
 
 export const load = (async () => {
@@ -29,18 +29,24 @@ export const actions: Actions = {
         //console.log(formData)
         if(!codeForm.valid) return fail(400, { codeForm })
 
-        /*const codeExists = await helpers.checkCodeExists(code)
+        const code = codeForm.data.customCode
 
-        console.log(codeExists)
-        return { message: codeExists }*/
+        const codeExists = await helpers.checkCodeExists(code)
+        console.log('CustomCode: ' + codeExists)
 
-        return message(codeForm, 'Code Check submitted')
+        if(codeExists) {
+            return message(codeForm, 'Not available!')
+
+        } else {
+            return message(codeForm, 'Available!')
+
+        }
     },
 
     createZone: async ({ request }) => {
-        const formData = await request.formData()
-        //console.log(formData)
-
+        const zoneForm = await superValidate(request, zoneSchema)
+        console.log(zoneForm)
+/*
         const intro = formData.get("linkzone_intro") as string
         // const customZone = formData.get("customZone") as string
         const linkUrls = formData.getAll("link_url") as string[]
@@ -76,5 +82,6 @@ export const actions: Actions = {
                 //console.log(linkCreate)
             })
         }
+        */
     }
 }
