@@ -1,19 +1,39 @@
 <script lang=ts>
-      import LinkDetail from '$lib/linkDetail.svelte';
-      import LinkItem from '$lib/linkItem.svelte';
-      export let data
+      import { onMount } from 'svelte';
+      import LinkItem from '$lib/linkItem.svelte'
+      import LinkDetail from '$lib/linkDetail.svelte'
 
-      let links = data.zoneLinks
+      export let data
+      let hslDefault = 25
+      let bannerColors: string[] = []
+      let gradientColors: string[] = []
+
+      let links = data.zoneLinksDebug
       let detail = false
-      // $: console.log(data)
+      $: console.log(data)
+
+      onMount(() => {
+        console.log('mounted')
+      
+      for (let i = 0; i < links.length; i++) {
+            let random = Math.random() * (300 - 20) + 20;
+            const bannerColor = `hsl(${random}, 45%, 45%)`
+            const gradient = random + hslDefault
+            const gradientColor = `hsl(${gradient}, 45%, 45%)`
+
+            bannerColors = [...bannerColors, bannerColor]
+            gradientColors = [...gradientColors, gradientColor]
+        }
+        
+    })
 </script>
 
-<!-- {#if data.status == 404}
+{#if data.status == 404}
 <div class="absolute left-1/2 top-1/2 p-12 -translate-x-1/2 -translate-y-1/2 border border-zinc-200 rounded-2xl">
       <h1 class="text-4xl font-bold"> No zone found! </h1>
       <p class="text-lg font-medium"> Try inputting the code again on the <a class="text-lg font-bold" href="/connect"> connect </a> page</p>
 </div>
-{:else if data.status == 201} -->
+{:else if data.status == 201}
 <div class="w-screen h-screen bg-white">
       <div class="absolute inset-2 border border-zinc-200 rounded-3xl">
             
@@ -37,21 +57,21 @@
                   </div>
                   
             </div>
-            <!--
-            <div class="mt-28 mx-20 text-center drop-shadow-md  p-12 rounded-2xl ">
-                  <p class=""> {data.zone[0].intro} </p>
+            
+            <div class="mt-28 mx-20 text-center drop-shadow-md p-12 rounded-2xl ">
+                  <p class=""> {data.zoneDebug[0].intro} </p>
             </div>
-            <div class="mt-8 text-center bg-zinc-50 drop-shadow-md border border-zinc-200 p-8 rounded-2xl ">
+            <div class="mt-8 mx-8 text-center bg-zinc-50 drop-shadow-md border border-zinc-200 p-8 rounded-2xl ">
+                  <small class="absolute top-0 left-0 py-1 px-2 text-xs text-zinc-400 font-medium"> Click on a card to expand it! Click the URL for quick access!</small>
                   <div class="grid grid-cols-2 gap-4">
-                        {#each links as linkItem}
-                              
-                              <LinkItem url={linkItem.url} description={linkItem.description} />
+                        {#each links as linkItem, id}  
+                              <LinkItem url={linkItem.url} id={id} description={linkItem.description} bannerColors={bannerColors} gradientColors={gradientColors}/>
                         {/each}
                   </div>
-            </div> -->
+            </div>
       </div>
 </div>
-<!-- {/if} -->
+{/if}
 
 
 
