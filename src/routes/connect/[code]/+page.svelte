@@ -62,7 +62,7 @@
                   <p class=""> {data.zoneDebug[0].intro} </p>
             </div>
             <div class="mt-8 mx-8 text-center bg-zinc-50 drop-shadow-md border border-zinc-200 p-8 rounded-2xl ">
-                  <small class="absolute top-0 left-0 py-1 px-2 text-xs text-zinc-400 font-medium"> Click on a card to expand it! Click the URL for quick access!</small>
+                  <small class="absolute top-0 left-0 py-1 px-2 text-xs text-zinc-400 font-medium"> Click on a card to expand it! Click the header for quick access!</small>
                   <div class="grid grid-cols-2 gap-4">
                         {#each links as linkItem, id}  
                               <LinkItem url={linkItem.url} id={id} description={linkItem.description} bannerColors={bannerColors} gradientColors={gradientColors}/>
