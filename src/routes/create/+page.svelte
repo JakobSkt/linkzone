@@ -49,7 +49,7 @@
                     </svg>    
                 </a>
    
-                <div class="flex flex-row gap-4 py-2 px-4 justify-center bg-gradient-to-br from-orange-200 via-yellow-300 to-amber-500 rounded-3xl drop-shadow-sm">
+                <div class="flex flex-row gap-4 py-2 px-4 justify-center bg-gradient-to-br from-orange-200 to-amber-500 rounded-3xl drop-shadow-sm">
                     <h1 class="relative text-3xl font-medium text-center"> Create a now LinkZone </h1>
                 </div>
             </div>
@@ -60,7 +60,7 @@
 
             <div class="flex flex-row gap-4">
                 <div class="p-6 text-center m-auto border border-zinc-200 rounded-lg">
-                    <p class="text-xl text-zinc-600"> {links.length} </p>
+                    <p class="text-xl text-zinc-600"> {$zoneForm.linkUrl.length} </p>
                 </div>
                 <div class="m-auto flex-auto">
                     <label for="links_add" class="text-sm text-zinc-600">Add links </label>
@@ -76,7 +76,7 @@
                 {#if customName}
                     <div transition:fly={{y: -20, duration: 200}} class="flex flex-row gap-2 mt-2 p-2 items-center justify-evenly">
                         <div class="flex flex-col w-3/4">
-                            <input name="customCode" bind:value={$form.customCode} type="text" class="p-2 bg-zinc-100 border-2 border-zinc-200 drop-shadow rounded-xl" placeholder="Enter custom zone name.."/>
+                            <input required name="customCode" bind:value={$form.customCode} type="text" class="p-2 bg-zinc-100 border-2 border-zinc-200 drop-shadow rounded-xl" placeholder="Enter custom zone name.."/>
                             {#if $message}
                                 <label class="text-xs {$message == 'Available!' ? 'text-green-600' : 'text-red-600'} text-center mt-2" for="customCode"> {$message} </label>
                             {/if}
@@ -90,7 +90,7 @@
             <form action="?/createZone" method="post" use:zoneEnhance class="flex flex-col mx-auto my-8 gap-8 p-8 border border-zinc-200 rounded-2xl">
                 <div class="max-h-60">
                     <label for="linkzone_intro" class="block mb-2 text-sm text-zinc-600 "> Introduce your LinkZone </label>
-                    <textarea required bind:value={$zoneForm.linkzone_intro} id="linkzone_intro" name="linkzone_intro" rows="4" class="block p-2.5 w-full text-md text-zinc-900 bg-zinc-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Introduction..."></textarea>
+                    <textarea required bind:value={$zoneForm.linkzone_intro} id="linkzone_intro" name="linkzone_intro" rows="4" maxlength="512" class="block p-2.5 w-full text-md text-zinc-900 bg-zinc-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Introduction..."></textarea>
                 </div>
 
                 <div id="link drawer" class="grid grid-rows-1 grid-cols-3">

@@ -6,10 +6,9 @@
 
     $: urlValue = url
 
-    function removeLink(id: number) {
+    function removeLink() {
+        console.log('old arr: ' + links)
         console.log('removing link at index ' + id)
-        let newArr = links.splice(id, 1)
-        links = newArr
     }
 </script>
 
@@ -24,7 +23,7 @@
         <textarea bind:value={description} id="linkDsc" rows="2" name="linkDsc" class="block p-2.5 w-full text-sm text-zinc-900 bg-zinc-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Description..."></textarea>
     </div>
 
-    <svg class="w-6 h-6 stroke-zinc-600 cursor-pointer hover:stroke-red-500" on:click={() => removeLink(id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+    <svg class="w-6 h-6 stroke-zinc-600 cursor-pointer hover:stroke-red-500" on:click={removeLink} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
       

@@ -59,7 +59,8 @@
             </div>
             
             <div class="mt-28 mx-20 text-center drop-shadow-md p-12 rounded-2xl ">
-                  <p class=""> {data.zoneDebug[0].intro} </p>
+                  <small class="absolute top-0 inset-x-0 text-zinc-400 font-bold m-auto"> Introduction </small>
+                  <p class="text-medium text-md text-zinc-800 -mt-6"> {data.zoneDebug[0].intro} </p>
             </div>
             <div class="mt-8 mx-8 text-center bg-zinc-50 drop-shadow-md border border-zinc-200 p-8 rounded-2xl ">
                   <small class="absolute top-0 left-0 py-1 px-2 text-xs text-zinc-400 font-medium"> Click on a card to expand it! Click the header for quick access!</small>

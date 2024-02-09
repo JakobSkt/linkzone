@@ -13,7 +13,7 @@ const codeSchema = z.object({
 const zoneSchema = z.object({
     linkzone_intro: z.string(),
     linkUrl: z.string().array(),
-    linkDsc: z.string().array()
+    linkDsc: z.string().array().optional()
 })
 
 export const load = (async () => {

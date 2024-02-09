@@ -1,19 +1,31 @@
 <script lang="ts">
     import heroMessage from '$lib/assets/linkzone-hero-message.svg'
-    import heroArrow from '$lib/assets/linkzone-hero-arrow.svg'
+    import heroArrow from '$lib/assets/LinkZoneHeroArrow.svg'
 </script>
 
-<div class="w-screen h-screen bg-white overflow-hidden">
-    <div class="absolute inset-2 border border-zinc-200 rounded-3xl">
+<div class="w-screen h-fit bg-white overflow-hidden">
+    <div id="dotsTarget" class="absolute inset-2 border border-zinc-200 rounded-3xl">
 
     </div>
-    <div class="absolute left-0 inset-y-0 w-fit h-fit p-8 my-auto ml-8 bg-gradient-to-br from-orange-200 to-amber-400 border-zinc-200 border rounded-lg drop-shadow-sm">
-        <h1 class="relative text-6xl font-bold ">LinkZone</h1>
-        <p > The quickest way to connect a series of links! </p>
+    <div class="absolute left-0 inset-y-0 w-fit h-fit p-4 mt-48 ml-8 bg-zinc-50 border-zinc-700 border-2 rounded-3xl drop-shadow-sm flex flex-col justify-evenly items-center gap-4">
+        <div class="p-2 flex flex-row gap-2 items-center justify-start">
+            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-orange-500 relative inline-block">
+                <span class="relative text-zinc-800 text-4xl font-bold"> Struggling </span>
+              </span>
+            <h1 class="relative text-4xl font-bold text-zinc-800"> with sharing links?</h1>
+        </div>
+
+        <p class="py-1 px-8 bg-zinc-100 border border-zinc-600 text-zinc-600 text-md font-medium rounded-2xl"> Don’t worry. The solution is only a scroll away! </p>
+        
+        <svg class="w-6 h-6 stroke-zinc-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+          
     </div>
-    <div class="absolute right-0 top-1/2 mr-96">
-        <h1 class="text-center text-zinc-600 text-4xl font-black -ml-96 -mb-12 -rotate-12"> Have you ever tried this? </h1>
-        <img src={heroArrow} class="m-4 ml-60 rotate-12" alt="Arrow pointing from text to message bubble">
+    
+    <img src={heroArrow} alt="Hero Arrow" class="absolute w-40 scale-x-flip rotate-90 top-1/4 left-1/2 -ml-8">
+
+    <div class="absolute right-0 top-1/3 mr-40">
         <img src={heroMessage} alt="Hero Message Bubble">
         
         <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 float-right -top-4 left-12">
@@ -27,7 +39,9 @@
 </div>
 
 <style lang="postcss">
-    html {
-        overflow: hidden;
+    #dotsTarget {
+        background-image: url(../lib/assets/dot-pattern-dark.svg);
+        background-size: 10%;
+        background-position: 10% 15%;
     }
 </style>

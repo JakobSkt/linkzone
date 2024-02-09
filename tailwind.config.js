@@ -6,6 +6,9 @@ export default {
       borderRadius: {
         '4xl': '2rem',
       },
+      scale: {
+        'flip': '-1',
+      }
     },
   },
   plugins: [],
