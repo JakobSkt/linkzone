@@ -1,9 +1,28 @@
-import { type Actions, fail } from '@sveltejs/kit';
+import { type Actions, fail, redirect } from '@sveltejs/kit';
 import * as helpers from '$lib/db/helpers'
 import { db } from '$lib/db/db';
-import { links } from '$lib/db/schema';
+import { zones, links } from '$lib/db/schema';
 import { z } from 'zod'
 import { superValidate, message, setError } from 'sveltekit-superforms/server';
+
+async function generateCode(customCode?: string) {
+    let code: string = ''
+    if(!customCode) {
+        code = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 10)
+    } else {
+        code = customCode
+    }
+
+    let codeExists = await helpers.checkCodeExists(code)
+
+    if(codeExists) {
+        generateCode()
+    } else {
+        console.log('Code: ' + code)
+        return code
+    }
+    
+}
 
 const codeSchema = z.object({
     customCodeb: z.boolean(),
@@ -12,6 +31,7 @@ const codeSchema = z.object({
 
 const zoneSchema = z.object({
     linkzone_intro: z.string(),
+    linkzone_customCode: z.string().optional(),
     linkUrl: z.string().array(),
     linkDsc: z.string().array().optional()
 })
@@ -45,20 +65,29 @@ export const actions: Actions = {
 
     createZone: async ({ request }) => {
         const zoneForm = await superValidate(request, zoneSchema)
-        console.log(zoneForm)
-/*
-        const intro = formData.get("linkzone_intro") as string
-        // const customZone = formData.get("customZone") as string
-        const linkUrls = formData.getAll("link_url") as string[]
-        const linkDscs = formData.getAll("link_dsc") as string[]
+        // console.log(zoneForm)
+
+        if(!zoneForm.valid) return fail(400, { zoneForm })
+
+        const intro = zoneForm.data.linkzone_intro
+        const customCode = zoneForm.data.linkzone_customCode
+        const linkUrls = zoneForm.data.linkUrl
+        const linkDscs = zoneForm.data.linkDsc
 
         if(linkUrls.length < 1) {
 
-            return { message: "Please add links to your zone"}
+            return message(zoneForm, 'Please add links to your zone')
 
         } else {
 
-            const zoneCode = "custom1"
+            let zoneCode: string = ''
+
+            if(customCode) {
+                zoneCode = await generateCode(customCode)
+            } else {
+                zoneCode = await generateCode()
+            }
+            
             let zoneBody: object[] = [
                 {
                     intro: intro,
@@ -66,10 +95,13 @@ export const actions: Actions = {
                 }
             ]
 
-
+            const zoneCreate = await db.insert(zones).values(zoneBody)
+            console.log(zoneCreate)
 
             const zoneId = await helpers.getZoneIdByCode(zoneCode)
-            console.log(zoneId)
+            if(!zoneId) {
+                return message(zoneForm, 'Zone not created. Please try again')
+            }
 
             linkUrls.forEach(async link => {
                 const linkBody: object = {
@@ -78,10 +110,11 @@ export const actions: Actions = {
                     zoneId: zoneId?.id
                 }
 
-                //const linkCreate = await db.insert(links).values(linkBody)
-                //console.log(linkCreate)
+                const linkCreate = await db.insert(links).values(linkBody)
+                console.log(linkCreate)
             })
+
+            redirect(301, '/create/success')
         }
-        */
     }
 }

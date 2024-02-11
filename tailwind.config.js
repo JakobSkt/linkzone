@@ -17,7 +17,10 @@ export default {
         'dotsSize': '10%',
       },
       backgroundPosition: {
-        'dotsPosition': '10% 15%',
+        'dotsPosition': '10% 9.9%',
+      },
+      width: {
+        '68': '17rem',
       }
     },
   },
