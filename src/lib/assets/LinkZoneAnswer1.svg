@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="77.219719mm"
+   height="19.530882mm"
+   viewBox="0 0 77.219719 19.530882"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="LinkZoneAnswer1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.76486221"
+     inkscape:cx="51.643289"
+     inkscape:cy="-44.452451"
+     inkscape:window-width="1512"
+     inkscape:window-height="917"
+     inkscape:window-x="0"
+     inkscape:window-y="65"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="218.14336"
+       y="447.76797"
+       width="272.10513"
+       height="45.924919"
+       id="rect1" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath26">
+      <path
+         d="M 0,980 H 1400 V 0 H 0 Z"
+         transform="translate(-944.00042,-590.39461)"
+         id="path26" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath26-9">
+      <path
+         d="M 0,980 H 1400 V 0 H 0 Z"
+         transform="translate(-944.00042,-590.39461)"
+         id="path26-2" />
+    </clipPath>
+    <rect
+       x="218.14336"
+       y="447.76797"
+       width="272.10513"
+       height="45.924919"
+       id="rect1-4" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-73.81875,-150.28332)">
+    <path
+       id="path25-6"
+       d="m 0,0 c 7.435,5.77 6.214,27.52 6.214,27.52 v 0 c 0,15.135 12.384,27.519 27.52,27.519 h 175.77 c 15.135,0 27.519,-12.384 27.519,-27.519 v 0 C 237.023,12.384 224.639,0 209.504,0 H 33.734 C 27.834,0 22.353,1.881 17.86,5.074 17.86,5.074 6.436,-1.886 0,0"
+       style="fill:#dedede;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.30681715,0,0,-0.35277776,73.81875,169.69986)"
+       clip-path="url(#clipPath26-9)" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,26.435711,36.408825)"
+       id="text1-2"
+       style="font-size:32px;white-space:pre;shape-inside:url(#rect1-4);display:inline;fill:#3f3f46"><tspan
+         x="218.14258"
+         y="477.10091"
+         id="tspan5"><tspan
+           style="font-weight:500;font-family:Figtree;-inkscape-font-specification:'Figtree Medium';fill:#252525"
+           id="tspan4">That's a mess!</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:8.46667px;font-family:Figtree;-inkscape-font-specification:'Figtree Medium';fill:#dedede;stroke-width:0.264583"
+       x="152.55199"
+       y="129.37515"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="stroke-width:0.264583"
+         x="152.55199"
+         y="129.37515" /></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:8.46667px;font-family:Figtree;-inkscape-font-specification:'Figtree Medium';fill:#252525;fill-opacity:1;stroke-width:0.264583"
+       x="131.45068"
+       y="124.53223"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0.264583"
+         x="131.45068"
+         y="124.53223"></tspan></text>
+  </g>
+</svg>

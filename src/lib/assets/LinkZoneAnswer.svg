@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100.61935mm"
+   height="19.530882mm"
+   viewBox="0 0 100.61935 19.530882"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="LinkZoneAnswer.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0211394"
+     inkscape:cx="88.626489"
+     inkscape:cy="5.8757893"
+     inkscape:window-width="1512"
+     inkscape:window-height="917"
+     inkscape:window-x="0"
+     inkscape:window-y="65"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="218.14336"
+       y="447.76797"
+       width="333.80093"
+       height="45.924919"
+       id="rect1" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath26">
+      <path
+         d="M 0,980 H 1400 V 0 H 0 Z"
+         transform="translate(-944.00042,-590.39461)"
+         id="path26" />
+    </clipPath>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-48.152248,-148.97121)">
+    <path
+       id="path25"
+       d="m 0,0 c 7.435,5.77 6.214,27.52 6.214,27.52 v 0 c 0,15.135 12.384,27.519 27.52,27.519 h 175.77 c 15.135,0 27.519,-12.384 27.519,-27.519 v 0 C 237.023,12.384 224.639,0 209.504,0 H 33.734 C 27.834,0 22.353,1.881 17.86,5.074 17.86,5.074 6.436,-1.886 0,0"
+       style="fill:#dedede;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.42451303,0,0,-0.35277776,48.152248,168.38775)"
+       clip-path="url(#clipPath26)" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0.91132259,34.934033)"
+       id="text1"
+       style="font-size:32px;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#3f3f46"><tspan
+         x="218.14258"
+         y="477.10091"
+         id="tspan2"><tspan
+           style="font-weight:500;font-family:Figtree;-inkscape-font-specification:'Figtree Medium';fill:#252525"
+           id="tspan1">Try LinkZone instead!</tspan></tspan></text>
+  </g>
+</svg>

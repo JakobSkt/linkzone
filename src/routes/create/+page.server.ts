@@ -114,7 +114,7 @@ export const actions: Actions = {
                 console.log(linkCreate)
             })
 
-            redirect(301, '/create/success')
+            redirect(301, '/create/success&' + zoneCode)
         }
     }
 }

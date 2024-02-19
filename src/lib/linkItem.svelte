@@ -25,9 +25,9 @@
     }
 
 </script>
-<div id="linkCard" class:active={detail} class="{detail ? 'row-span-2' : 'row-span-1'} bg-zinc-200 p-4 rounded-2xl cursor-pointer drop-shadow m-2 overflow-hidden" on:click={handleDetail}>                             
+<div id="linkCard" class:active={detail} class="{detail ? 'row-span-2' : 'row-span-1'} bg-zinc-200 dark:bg-zinc-600 p-4 rounded-2xl cursor-pointer drop-shadow m-2 overflow-hidden" on:click={handleDetail}>                             
     <h1 on:click={() => qckRedirect(url)} class="text-md font-bold text-zinc-100 text-nowrap overflow-hidden p-2 -mt-4 -mx-4 rounded-t-2xl drop-shadow cursor-alias" style="  background-image: linear-gradient(to right, {bannerColors[id]} , {gradientColors[id]})"> {url} </h1>
-    <p class="mt-2 mx-auto"> {description}</p>
+    <p class="mt-2 mx-auto dark:text-zinc-200"> {description}</p>
     <div class="flex flex-row items-center justify-evenly">
         <button on:click={() => qckRedirect(url)} class="p-2 bg-zinc-800 text-zinc-100 w-2/3 rounded-3xl my-2 hover:bg-zinc-700"> Go to site! </button>
         <svg on:click={handleDetail} class="stroke-zinc-800 w-10 h-10 hover:stroke-zinc-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5">

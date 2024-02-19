@@ -30,7 +30,7 @@
         <div class="flex flex-col gap-4 p-4">
             <div class="flex flex-col">
                 <label class="text-xs text-zinc-500" for="code"> LinkZone Code </label>
-                <input bind:value={code} class="p-2 bg-zinc-200 dark:bg-zinc-900 rounded-md border border-zinc-400 hover:border-zinc-700 dark:border-zinc-500 dark:hover:border-zinc-300 placeholder-zinc-700 dark:placeholder-zinc-200 transition duration-100" type="text" name="code" id="code" placeholder="Input code..">
+                <input bind:value={code} class="p-2 bg-zinc-200 dark:text-zinc-200 dark:bg-zinc-900 rounded-md border border-zinc-400 hover:border-zinc-700 dark:border-zinc-500 dark:hover:border-zinc-300 placeholder-zinc-700 dark:placeholder-zinc-200 transition duration-100" type="text" name="code" id="code" placeholder="Input code..">
                 {#if codeError}
                     <div class="flex flex-row items-center justify-start gap-1 stroke-orange-400 text-orange-400">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2">
