@@ -8,22 +8,38 @@
       let bannerColors: string[] = []
       let gradientColors: string[] = []
 
-      let links = data.zoneLinksDebug
+      let links = data.zoneLinks
       let detail = false
-      $: console.log(data)
+
+      let page: HTMLDivElement
+      let inner: HTMLDivElement
+      let height: number = 100
+      //$: console.log(data)
 
       onMount(() => {
-        console.log('mounted')
-      
-      for (let i = 0; i < links.length; i++) {
-            let random = Math.random() * (300 - 20) + 20;
-            const bannerColor = `hsl(${random}, 45%, 45%)`
-            const gradient = random + hslDefault
-            const gradientColor = `hsl(${gradient}, 45%, 45%)`
+            console.log('mounted')
+            let rows = Math.round(links.length/2)
+            console.log(rows)
+            let incrementHeight = 7
+            if(rows > 2) {
+                  page.style.height = `${height+(incrementHeight*rows*1.4)}vh`
+                  inner.style.height = `${height+(incrementHeight*rows*1.4)-2}vh`
+                  console.log('page height', page.style.height)
+            }
+            
 
-            bannerColors = [...bannerColors, bannerColor]
-            gradientColors = [...gradientColors, gradientColor]
-        }
+            
+      
+            for (let i = 0; i < links.length; i++) {
+                  let random = Math.random() * (300 - 20) + 20;
+                  const bannerColor = `hsl(${random}, 45%, 45%)`
+                  const gradient = random + hslDefault
+                  const gradientColor = `hsl(${gradient}, 45%, 45%)`
+
+                  bannerColors = [...bannerColors, bannerColor]
+                  gradientColors = [...gradientColors, gradientColor]
+
+            }
         
     })
 </script>
@@ -31,11 +47,11 @@
 {#if data.status == 404}
 <div class="absolute left-1/2 top-1/2 p-12 -translate-x-1/2 -translate-y-1/2 border border-zinc-200 rounded-2xl">
       <h1 class="text-4xl font-bold"> No zone found! </h1>
-      <p class="text-lg font-medium"> Try inputting the code again on the <a class="text-lg font-bold" href="/connect"> connect </a> page</p>
+      <p class="text-lg font-medium"> Try inputting the code again on the <a class="text-lg font-bold" data-sveltekit-reload href="/connect"> connect </a> page</p>
 </div>
 {:else if data.status == 201}
-<div class="w-screen h-screen bg-white dark:bg-zinc-900">
-      <div class="absolute inset-2 border border-zinc-200 dark:border-zinc-500  rounded-3xl">
+<div bind:this={page} class="w-screen h-screen bg-white dark:bg-zinc-900">
+      <div bind:this={inner} class="absolute inset-2 border border-zinc-200 dark:border-zinc-500  rounded-3xl">
             
             <div class="absolute inset-2 h-fit">
                   <div class="flex flex-row gap-4 items-center justify-center">
@@ -60,9 +76,9 @@
             
             <div class="mt-28 text-center drop-shadow-md p-12 rounded-2xl ">
                   <small class="absolute top-0 inset-x-0 text-zinc-400 dark:text-zinc-300 font-bold m-auto"> Introduction </small>
-                  <p class="text-medium text-md text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-700 py-4 px-8 rounded-lg border dark:border-zinc-600 -mt-4"> {data.zoneDebug[0].intro} </p>
+                  <p class="text-medium text-md text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-700 py-4 px-8 rounded-lg border dark:border-zinc-600 -mt-4"> {data.zone[0].intro} </p>
             </div>
-            <div class=" mx-8 text-center bg-zinc-50 dark:bg-zinc-800 drop-shadow-md border border-zinc-200 dark:border-zinc-600 p-8 rounded-2xl ">
+            <div class="mx-8 text-center bg-zinc-50 dark:bg-zinc-800 drop-shadow-md border border-zinc-200 dark:border-zinc-600 p-8 rounded-2xl ">
                   <small class="absolute top-0 left-0 py-1 px-2 text-xs text-zinc-400 font-medium"> Click on a card to expand it! Click the header for quick access!</small>
                   <div class="grid grid-cols-2 gap-4">
                         {#each links as linkItem, id}  

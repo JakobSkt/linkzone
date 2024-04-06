@@ -10,8 +10,8 @@ export default {
         'flip': '-1',
       },
       backgroundImage: {
-        'lightDots': 'url("./src/lib/assets/dot-pattern-dark.svg")',
-        'darkDots': 'url("./src/lib/assets/dot-pattern-darkV2.svg")',
+        'lightDots': 'url("/src/lib/assets/dot-pattern-dark.svg")',
+        'darkDots': 'url("/src/lib/assets/dot-pattern-darkV2.svg")',
       },
       backgroundSize: {
         'dotsSize': '10%',

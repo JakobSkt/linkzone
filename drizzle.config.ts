@@ -1,10 +1,12 @@
-import type { Config } from 'drizzle-kit';
 import 'dotenv/config';
+import type { Config } from 'drizzle-kit';
 
 export default {
   schema: './src/lib/db/schema.ts',
-  driver: 'mysql2',
+  out: './migrations',
+  driver: 'turso',
   dbCredentials: {
-    uri: process.env.DATABASE_URL ?? '',
-  }
+    url: process.env.TURSO_CONNECTION_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  },
 } satisfies Config;

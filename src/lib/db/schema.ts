@@ -1,23 +1,27 @@
-import { int, mysqlEnum, mysqlTable, uniqueIndex, varchar, serial, timestamp} from 'drizzle-orm/mysql-core'
+import { integer, uniqueIndex, text, SQLiteTimestamp, sqliteTable} from 'drizzle-orm/sqlite-core'
 import { sql, relations } from 'drizzle-orm'
 
-export const zones = mysqlTable('zones', {
-    id: serial('id').autoincrement().primaryKey(),
-    intro: varchar('intro', { length: 512 }),
-    code: varchar('code', { length: 255 }),
-    createdAt: timestamp('createdAt').default(sql`CURRENT_TIMESTAMP`)
+export const zones = sqliteTable('zones', {
+    id: integer('id').primaryKey(),
+    intro: text('intro', { length: 512 }),
+    code: text('code', { length: 255 }),
+    createdAt: text('created_at')
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
 })
 
 export const zonesRelations = relations(zones, ({ many }) => ({
     links: many(links)
 }))
 
-export const links = mysqlTable('links', {
-    id: serial('id').autoincrement().primaryKey(),
-    url: varchar('url', { length: 512 }),
-    description: varchar('description', { length: 512 }),
-    zoneId: int('zoneId'),
-    createdAt: timestamp('createdAt').default(sql`CURRENT_TIMESTAMP`)
+export const links = sqliteTable('links', {
+    id: integer('id').primaryKey(),
+    url: text('url', { length: 512 }),
+    description: text('description', { length: 512 }),
+    zoneId: integer('zoneId'),
+    createdAt: text('created_at')
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
 })
 
 

@@ -14,8 +14,8 @@
     <div class="h-screen w-screen">
         <div id="dotsTarget" class="h-full mx-4 bg-lightDots bg-dotsSize bg-dotsPosition border-x border-zinc-200 dark:bg-darkDots dark:bg-zinc-900 dark:stroke-zinc-900 dark:border-zinc-600"></div>
     </div>
-    <div class="h-screen">
-        <div id="dotsTarget" class="h-1/3 mx-4 -mb-4 bg-lightDots bg-dotsSize bg-dotsPosition border-l border-r border-b border-zinc-200 rounded-b-3xl dark:bg-darkDots dark:bg-zinc-900 dark:stroke-zinc-900 dark:border-zinc-600"></div>
+    <div class="h-[30vh] mb-4">
+        <div id="dotsTarget" class="h-full mx-4 bg-lightDots bg-dotsSize bg-dotsPosition border-l border-r border-b border-zinc-200 rounded-b-3xl dark:bg-darkDots dark:bg-zinc-900 dark:stroke-zinc-900 dark:border-zinc-600"></div>
     </div>
 
     <div class="absolute left-0 inset-y-0 w-fit h-fit top-1/3 ml-10 xl:ml-32 flex flex-col items-start gap-4">

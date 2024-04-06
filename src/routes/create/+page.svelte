@@ -6,6 +6,10 @@
 
     let links: string[] = []
     let linkToAdd = ''
+    let linkError = false
+    let page: HTMLDivElement
+    let inner: HTMLDivElement
+    let pageHeight = 100
     let customName = false
     let nameAvailable = false
 
@@ -27,19 +31,27 @@
         resetForm: true
     })
 
-    async function addLink(e: KeyboardEvent) {
-        if(e.key === "Enter") {
+    async function addLink(e: KeyboardEvent, svg: boolean = false) {
+        if(e.key === "Enter" || svg) {
+            if(linkToAdd == '') {
+                linkError = true
+                return
+            }
+            linkError = false
             $zoneForm.linkUrl = [...$zoneForm.linkUrl, linkToAdd]
             linkToAdd = ''
-        }  
+            pageHeight += 20
+            page.style.height = `${pageHeight}vh`
+            inner.style.height = `${pageHeight-2}vh`
+        }
     }
 
-    $: console.log($message)
+    // $: console.log($message)
     
 </script>
 
-<div class="w-screen h-dvh bg-white dark:bg-zinc-900">
-    <div class="absolute bg-lightDots dark:bg-darkDots bg-dotsSize bg-dotsPosition dark:bg-zinc-900 inset-2 rounded-3xl border-2 border-zinc-200 dark:border-zinc-600">
+<div bind:this={page} class="w-screen h-screen bg-white dark:bg-zinc-900">
+    <div bind:this={inner} class="absolute bg-lightDots dark:bg-darkDots bg-dotsSize bg-dotsPosition dark:bg-zinc-900 inset-2 rounded-3xl border-2 border-zinc-200 dark:border-zinc-600">
 
         <div class="absolute inset-2 h-fit  w-fit mx-auto p-2 rounded-2xl">
             <div class="flex flex-row gap-4 items-center justify-center">
@@ -62,15 +74,28 @@
       </div>
 
         <div class="mt-28 mx-auto w-2/3 justify-center items-center p-8 border dark:border-zinc-500 dark:bg-zinc-800 bg-zinc-50 rounded-3xl">
-            <div class="flex flex-row gap-4">
+            <div class="flex flex-row w-full justify-start">
                 <div class="p-6 dark:bg-zinc-900 text-center m-auto border border-zinc-200 dark:border-zinc-500 rounded-lg">
                     <p class="text-xl text-zinc-600 dark:text-zinc-200"> {$zoneForm.linkUrl.length} </p>
                 </div>
-                <div class="m-auto flex-auto">
-                    <label for="links_add" class="text-sm text-zinc-600 dark:text-zinc-400">Add links </label>
-                    <input on:keydown={() => addLink(event)} bind:value={linkToAdd} type="text" class="p-4 w-full dark:bg-zinc-900 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-500 rounded-lg drop-shadow-sm hover:border-zinc-400 dark:hover:border-zinc-300" placeholder="Input link" name="links_add">
-                </div>
+                    <div class="w-full m-4 flex-col">
+                        <label for="links_add" class="text-sm text-zinc-600 dark:text-zinc-400">Add links </label>
+                            <div class="flex flex-row gap-4 w-full items-center">
+                                <input on:keydown={() => addLink(event)} bind:value={linkToAdd} type="text" class="p-4 w-full dark:bg-zinc-900 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-500 rounded-lg drop-shadow-sm hover:border-zinc-400 dark:hover:border-zinc-300" placeholder="Input link" name="links_add">
+                                <svg on:click={() => addLink(event, true)} class="w-14 p-2 h-14 cursor-pointer stroke-zinc-400 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-500 rounded-lg drop-shadow-sm hover:border-zinc-400 dark:hover:border-zinc-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+                    </div>  
             </div>
+            {#if linkError}
+                    <div class="flex flex-row items-center justify-start gap-1 stroke-orange-400 text-orange-400">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                        </svg> 
+                        <p> Please input a valid link </p>
+                    </div>
+                {/if}
 
             <form action="?/checkCode" method="post" use:enhance class="flex flex-col p-4 mt-4 border border-zinc-200 dark:border-zinc-500 rounded-2xl">
                 <div class="flex flex-row gap-4">
