@@ -1,7 +1,7 @@
 import { type Actions, fail, redirect } from '@sveltejs/kit';
 import * as helpers from '$lib/db/helpers'
 import { db } from '$lib/db/db';
-import { zones, links } from '$lib/db/schema';
+import { zonesTable, linksTable } from '$lib/db/schema';
 import { z } from 'zod'
 import { superValidate, message, setError } from 'sveltekit-superforms/server';
 
@@ -95,7 +95,7 @@ export const actions: Actions = {
                 }
             ]
 
-            const zoneCreate = await db.insert(zones).values(zoneBody)
+            const zoneCreate = await db.insert(zonesTable).values(zoneBody)
             console.log(zoneCreate)
 
             const zoneId = await helpers.getZoneIdByCode(zoneCode)
@@ -110,7 +110,7 @@ export const actions: Actions = {
                     zoneId: zoneId?.id
                 }
 
-                const linkCreate = await db.insert(links).values(linkBody)
+                const linkCreate = await db.insert(linksTable).values(linkBody)
                 console.log(linkCreate)
             })
 

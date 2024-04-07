@@ -45,10 +45,16 @@
 </script>
 
 {#if data.status == 404}
-<div class="absolute left-1/2 top-1/2 p-12 -translate-x-1/2 -translate-y-1/2 border border-zinc-200 rounded-2xl">
-      <h1 class="text-4xl font-bold"> No zone found! </h1>
-      <p class="text-lg font-medium"> Try inputting the code again on the <a class="text-lg font-bold" data-sveltekit-reload href="/connect"> connect </a> page</p>
+<div class="w-screen h-screen bg-white dark:bg-zinc-900">
+      <div class="absolute inset-2 bg-lightDots dark:bg-darkDots bg-dotsSize bg-dotsPosition border border-zinc-200 dark:border-zinc-600 rounded-3xl"></div>
+
+      <div class="absolute bg-zinc-50 dark:bg-zinc-800 left-1/2 top-1/2 p-12 -translate-x-1/2 -translate-y-1/2 border border-zinc-200 dark:border-zinc-400 rounded-2xl">
+            <h1 class="text-4xl font-bold dark:text-zinc-200"> No zone found! </h1>
+            <p class="text-lg font-medium dark:text-zinc-200"> Try inputting the code again on the <a class="text-lg font-bold dark:text-zinc-400" data-sveltekit-reload href="/connect"> connect </a> page</p>
+      </div>
 </div>
+
+
 {:else if data.status == 201}
 <div bind:this={page} class="w-screen h-screen bg-white dark:bg-zinc-900">
       <div bind:this={inner} class="absolute inset-2 border border-zinc-200 dark:border-zinc-500  rounded-3xl">

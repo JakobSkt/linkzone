@@ -1,7 +1,7 @@
 import { integer, uniqueIndex, text, SQLiteTimestamp, sqliteTable} from 'drizzle-orm/sqlite-core'
 import { sql, relations } from 'drizzle-orm'
 
-export const zones = sqliteTable('zones', {
+export const zonesTable = sqliteTable('zones', {
     id: integer('id').primaryKey(),
     intro: text('intro', { length: 512 }),
     code: text('code', { length: 255 }),
@@ -10,11 +10,11 @@ export const zones = sqliteTable('zones', {
     .notNull(),
 })
 
-export const zonesRelations = relations(zones, ({ many }) => ({
-    links: many(links)
+export const zonesRelations = relations(zonesTable, ({ many }) => ({
+    links: many(linksTable)
 }))
 
-export const links = sqliteTable('links', {
+export const linksTable = sqliteTable('links', {
     id: integer('id').primaryKey(),
     url: text('url', { length: 512 }),
     description: text('description', { length: 512 }),
@@ -26,9 +26,9 @@ export const links = sqliteTable('links', {
 
 
 
-export const linksRelations = relations(links, ({ one }) => ({ 
-    zone: one(zones, {
-        fields: [links.zoneId],
-        references: [zones.id],
+export const linksRelations = relations(linksTable, ({ one }) => ({ 
+    zone: one(zonesTable, {
+        fields: [linksTable.zoneId],
+        references: [zonesTable.id],
     }),
 }))

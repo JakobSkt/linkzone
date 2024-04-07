@@ -1,12 +1,12 @@
 import { db } from '$lib/db/db'
-import { zones, links } from '$lib/db/schema'
+import { zonesTable, linksTable } from '$lib/db/schema'
 import { eq } from 'drizzle-orm'
 
 export const load = async ({ params }) => {
   const inputCode = params.code
   // console.log('inputCode: ', inputCode)
 
-  const zone = await db.select().from(zones).where(eq(zones.code, inputCode))
+  const zone = await db.select().from(zonesTable).where(eq(zonesTable.code, inputCode))
   /*const zoneDebug = [
     {
       id: 2,
@@ -16,7 +16,7 @@ export const load = async ({ params }) => {
   ]*/
   if(zone[0] != undefined) {
 
-    const zoneLinks = await db.select().from(links).where(eq(links.zoneId, zone[0].id))
+    const zoneLinks = await db.select().from(linksTable).where(eq(linksTable.zoneId, zone[0].id))
       
     return { status: 201, inputCode, zone, zoneLinks}
 

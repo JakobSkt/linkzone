@@ -1,5 +1,5 @@
 import { db } from '$lib/db/db'
-import { zones, links } from '$lib/db/schema'
+import { zonesTable, linksTable } from '$lib/db/schema'
 import { eq } from 'drizzle-orm'
 
 export const load = async ({ params }) => {

@@ -1,45 +1,45 @@
 import { db } from '$lib/db/db'
-import { zones, links } from '$lib/db/schema'
+import { zonesTable, linksTable } from '$lib/db/schema'
 import { eq } from 'drizzle-orm'
 
 export async function getZoneIdByCode(zoneCode: string) {
-    const zoneId = await db.query.zones.findFirst({
+    const zoneId = await db.query.zonesTable.findFirst({
         columns: {
             id: true
         },
-        where: eq(zones.code, zoneCode)
+        where: eq(zonesTable.code, zoneCode)
     })
 
     return zoneId
 }
 
 export async function getZoneByCode(zoneCode: string) {
-    const zone = await db.query.zones.findFirst({
-        where: eq(zones.code, zoneCode)
+    const zone = await db.query.zonesTable.findFirst({
+        where: eq(zonesTable.code, zoneCode)
     })
 
     return zone
 }
 
 export async function getZoneById(zoneId: number) {
-    const zone = await db.query.zones.findFirst({
-        where: eq(zones.id, zoneId)
+    const zone = await db.query.zonesTable.findFirst({
+        where: eq(zonesTable.id, zoneId)
     })
 
     return zone
 }
 
 export async function getLinksByZoneId(zoneId: number) {
-    const linkArr = await db.query.links.findMany({
-        where: eq(links.zoneId, zoneId)
+    const linkArr = await db.query.linksTable.findMany({
+        where: eq(linksTable.zoneId, zoneId)
     })
 
     return linkArr
 }
 
 export async function checkCodeExists(zoneCode: string) {
-    const zone = await db.query.zones.findFirst({
-        where: eq(zones.code, zoneCode)
+    const zone = await db.query.zonesTable.findFirst({
+        where: eq(zonesTable.code, zoneCode)
     })
 
     return zone != undefined;
