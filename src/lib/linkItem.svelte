@@ -2,13 +2,14 @@
     import { goto } from '$app/navigation'
     import LinkDetail from '$lib/linkDetail.svelte'
 	import Layout from '../routes/+layout.svelte';
+    import LinkPreview from '$lib/linkPreview/LinkPreview.svelte';
 
     export let url: string
     export let id: number
     export let description: string
     export let detail: boolean = false
-    export let bannerColors: string[]
-    export let gradientColors: string[]
+
+    let siteName = url.split(".")[0].split("://")[1]
     
     function handleDetail(event) {
         if(event.target.tagName == 'svg') {
@@ -25,25 +26,11 @@
     }
 
 </script>
-<div id="linkCard" class:active={detail} class="{detail ? 'row-span-2' : 'row-span-1'} bg-zinc-200 dark:bg-zinc-600 p-4 rounded-2xl cursor-pointer drop-shadow m-2 overflow-hidden" on:click={handleDetail}>                             
-    <h1 on:click={() => qckRedirect(url)} class="text-md font-bold text-zinc-100 text-nowrap overflow-hidden p-2 -mt-4 -mx-4 rounded-t-2xl drop-shadow cursor-alias" style="  background-image: linear-gradient(to right, {bannerColors[id]} , {gradientColors[id]})"> {url} </h1>
-    <p class="mt-2 mx-auto dark:text-zinc-200"> {description}</p>
-    <div class="flex flex-row items-center justify-evenly">
-        <button on:click={() => qckRedirect(url)} class="p-2 bg-zinc-800 text-zinc-100 w-2/3 rounded-3xl my-2 hover:bg-zinc-700"> Go to site! </button>
-        <svg on:click={handleDetail} class="stroke-zinc-800 w-10 h-10 hover:stroke-zinc-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-    </div>
+<div id="linkCard" on:click={() => qckRedirect(url)} class="bg-white dark:bg-zinc-900 hover:bg-zinc-50 hover:dark:bg-zinc-800 p-4 border border-zinc-200 dark:border-zinc-600 hover:border-zinc-400 hover:dark:border-zinc-400 rounded-2xl cursor-pointer drop-shadow-sm hover:drop-shadow-md transition h-full overflow-hidden flex flex-col items-start justify-center" on:click={handleDetail}>                             
+    <p class="font-medium text-left break-words text-zinc-700 dark:text-zinc-200"> {description}</p>
+    <span class="text-xs text-left text-zinc-400 dark:text-zinc-600 mt-2"> {siteName.charAt(0).toUpperCase() + siteName.slice(1)} • {url} </span>
 </div>
 
 
 <style lang="postcss">
-   #linkCard {
-        max-height: 100px;
-        transition: all 0.2s ease-in-out;
-    }
-
-    #linkCard.active {
-        max-height: 250px;
-    } 
 </style>

@@ -91,7 +91,7 @@
         </div>
 
         <div use:reveal class="group absolute mt-40 w-68 cursor-pointer">
-            <button on:click={() => goto('/create')} class="absolute py-2 px-4 rounded-2xl border border-zinc-300 dark:border-zinc-500 bg-zinc-200 dark:bg-zinc-800 z-50">
+            <button id="heroBtn" on:click={() => goto('/create')} class="absolute py-2 px-4 rounded-2xl border border-zinc-300 dark:border-zinc-500 bg-zinc-50 dark:bg-zinc-800 z-50">
                 <p class="font-bold text-lg text-zinc-700 dark:text-zinc-100"> Supercharge my linksharing! </p>
             </button>
     
@@ -105,4 +105,7 @@
 </div>
 
 <style lang="postcss">
+    #heroBtn:hover {
+        box-shadow: 0 0 55px #fb923c74;
+    }
 </style>
