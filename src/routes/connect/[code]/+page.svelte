@@ -82,8 +82,13 @@
             
             <div class="mt-28 text-center p-12 rounded-2xl flex flex-col gap-4 ">
                   <small class="text-zinc-600 dark:text-zinc-300 font-bold m-auto"> Introduction </small>
-                  <p class="text-medium text-md text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900 py-4 px-8 rounded-xl border border-zinc-300 dark:border-zinc-600 -mt-4 w-2/3 mx-auto"> {data.zone[0].intro} </p>
+                  {#if data.zone[0].intro != null}
+                        <p class="text-medium text-md text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900 py-4 px-8 rounded-xl border border-zinc-300 dark:border-zinc-600 -mt-4 w-2/3 mx-auto"> {data.zone[0].intro} </p>
+                  {:else}
+                        <p class="text-medium text-md text-zinc-800 dark:text-zinc-200 bg-white dark:bg-zinc-900 py-4 px-8 rounded-xl border border-zinc-300 dark:border-zinc-600 -mt-4 w-2/3 mx-auto code"> No introduction for this zone </p>
+                  {/if}
             </div>
+            
             <div class="mx-8 text-center bg-zinc-50 dark:bg-zinc-800 drop-shadow-md border border-zinc-300 dark:border-zinc-600 p-4 rounded-2xl ">
                   <small class="absolute top-0 left-0 py-1 px-8 font-bold text-md text-zinc-600 dark:text-zinc-300"> Links </small>
                   <div class="grid grid-cols-2 gap-4 mt-2">
